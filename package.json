@@ -1,0 +1,22 @@
+{
+  "name": "idolo-ticket-api",
+  "version": "1.0.0",
+  "description": "Api projet chef d'oeuvre",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karon16/idoloticket_api.git"
+  },
+  "author": "chris le designer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karon16/idoloticket_api/issues"
+  },
+  "homepage": "https://github.com/karon16/idoloticket_api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
