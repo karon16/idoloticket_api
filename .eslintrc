@@ -1,0 +1,34 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 2019,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": ["jest"],
+	"extends": ["eslint:recommended", "eslint-config-prettier"],
+	"rules": {
+		"no-console": "warn",
+		"strict": ["error", "never"],
+		"no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
+	},
+	"overrides": [
+		{
+			"files": [
+				"**/*.test.js",
+				"**/*.test.jsx",
+				"**/*.spec.js",
+				"**/*.spec.jsx"
+			],
+			"env": {
+				"jest": true
+			}
+		}
+	],
+	"env": {
+		"commonjs": true,
+		"es2021": true,
+		"browser": true
+	}
+}

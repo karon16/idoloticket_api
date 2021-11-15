@@ -1,22 +1,45 @@
 {
-  "name": "idolo-ticket-api",
-  "version": "1.0.0",
-  "description": "Api projet chef d'oeuvre",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm run test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/karon16/idoloticket_api.git"
-  },
-  "author": "chris le designer",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/karon16/idoloticket_api/issues"
-  },
-  "homepage": "https://github.com/karon16/idoloticket_api#readme",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+	"name": "idolo-ticket-api",
+	"version": "1.0.0",
+	"description": "Api projet chef d'oeuvre",
+	"main": "index.js",
+	"scripts": {
+		"start:dev": "SET NODE_ENV=development & nodemon server.js",
+		"start:prod": "SET NODE_ENV=production & node server.js",
+		"build": "babel src --out-dir dist",
+		"test": "jest --coverage",
+		"prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|ts|tsx|json)\"",
+		"format": "npm run prettier -- --write",
+		"check-format": "npm run prettier -- --list-different",
+		"lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx .",
+		"validate": "npm-run-all --parallel check-format lint",
+		"husky-install": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/karon16/idoloticket_api.git"
+	},
+	"author": "chris le designer",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/karon16/idoloticket_api/issues"
+	},
+	"homepage": "https://github.com/karon16/idoloticket_api#readme",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"dotenv": "^10.0.0",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.0.12",
+		"nodemon": "^2.0.15"
+	},
+	"devDependencies": {
+		"@babel/preset-env": "^7.15.8",
+		"eslint": "^8.2.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-jest": "^25.2.4",
+		"husky": "^7.0.4",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.4.1"
+	}
 }
