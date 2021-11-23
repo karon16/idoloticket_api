@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = mongoose.Schema(
 	{
@@ -26,9 +27,11 @@ const userSchema = mongoose.Schema(
 			type: Number,
 			validate: {
 				validator: function (v) {
-					return /d{14}/.test(v);
+					return /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})[-. ]?([0-9]{3})$/g.test(
+						v
+					);
 				},
-				message: '{VALUE} is not a valid 10 digit number!',
+				message: '{VALUE} is not a valid 12 digit number!',
 			},
 			required: true,
 		},
@@ -41,6 +44,15 @@ const userSchema = mongoose.Schema(
 	},
 	{ timestamps: true }
 );
+
+userSchema.pre('save', function (next) {
+	if (this.password) {
+		const salt = bcrypt.genSaltSync(10);
+		this.password = bcrypt.hashSync(this.password, salt);
+	}
+
+	next();
+});
 
 const User = new mongoose.model('User', userSchema);
 module.exports = User;

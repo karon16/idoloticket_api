@@ -4,7 +4,7 @@
 	"description": "Api projet chef d'oeuvre",
 	"main": "index.js",
 	"scripts": {
-		"start:dev": "SET NODE_ENV=development & nodemon server.js",
+		"start:dev": "nodemon server.js",
 		"start:prod": "SET NODE_ENV=production & node server.js",
 		"build": "babel src --out-dir dist",
 		"test": "jest --coverage",
@@ -31,6 +31,7 @@
 		"express": "^4.17.1",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^6.0.12",
+		"morgan": "^1.10.0",
 		"nodemon": "^2.0.15"
 	},
 	"devDependencies": {

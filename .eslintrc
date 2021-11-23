@@ -9,7 +9,7 @@
 	"plugins": ["jest"],
 	"extends": ["eslint:recommended", "eslint-config-prettier"],
 	"rules": {
-		"no-console": "warn",
+		// "no-console": "warn",
 		"strict": ["error", "never"],
 		"no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
 	},
@@ -29,6 +29,7 @@
 	"env": {
 		"commonjs": true,
 		"es2021": true,
-		"browser": true
+		"browser": true,
+		"node": true
 	}
 }
