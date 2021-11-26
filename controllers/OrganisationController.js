@@ -18,7 +18,7 @@ exports.getAllOrganisations = async (req, res) => {
 	try {
 		const organisations = await Organisation.find().populate({
 			path: 'contributors.user',
-			select: 'firstName',
+			select: 'firstName lastName email',
 		});
 
 		res.status(200).json({

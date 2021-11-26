@@ -24,8 +24,8 @@ class APIFeatures {
 		}
 		return this;
 	}
-  
-  //method to allow requester to limit fields in a query ex : "www.idoloticket.com/limitfieds="
+
+	//method to allow requester to limit fields in a query ex : "www.idoloticket.com/limitfieds="
 	limitFields() {
 		if (this.queryString.fields) {
 			const fields = this.queryString.fields.split('.').join(' ');

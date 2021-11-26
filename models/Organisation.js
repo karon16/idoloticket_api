@@ -35,10 +35,10 @@ const adressSchema = mongoose.Schema(
 	{ _id: false }
 );
 
-const contributorSchema = mongoose.Schema(
+const teamSchema = mongoose.Schema(
 	{
-		user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-		rights: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Right' }],
+		memberInfo: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+		memberRights: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Right' }],
 	},
 	{ _id: false }
 );
@@ -50,10 +50,10 @@ const organizationSchema = mongoose.Schema({
 		trim: true,
 		unique: true,
 	},
-	profile_picture: {
+	profilePicture: {
 		type: String,
 	},
-	cover_image: {
+	coverImage: {
 		type: String,
 	},
 	description: {
@@ -81,7 +81,7 @@ const organizationSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	tax_number: {
+	taxNumber: {
 		type: String,
 		required: true,
 	},
@@ -93,9 +93,9 @@ const organizationSchema = mongoose.Schema({
 		total: { type: Number },
 		average: { type: Number },
 	},
-	contributors: [
+	team: [
 		{
-			type: contributorSchema,
+			type: teamSchema,
 		},
 	],
 });
