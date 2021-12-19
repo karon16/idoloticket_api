@@ -1,4 +1,4 @@
-const Organisation = require('../models/Organisation');
+const Organisation = require('../models/OrganisationModel');
 
 exports.createOrganisation = async (req, res) => {
 	try {
@@ -17,7 +17,7 @@ exports.createOrganisation = async (req, res) => {
 exports.getAllOrganisations = async (req, res) => {
 	try {
 		const organisations = await Organisation.find().populate({
-			path: 'contributors.user',
+			path: 'team.memberInfo',
 			select: 'firstName lastName email',
 		});
 

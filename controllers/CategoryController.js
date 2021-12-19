@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const Category = require('../models/Category');
+const Category = require('../models/CategoryModel');
 
 exports.createCategory = async (req, res) => {
 	try {
@@ -15,12 +15,11 @@ exports.createCategory = async (req, res) => {
 		});
 	}
 };
+
+
 exports.getAllCategorys = async (req, res) => {
 	try {
-		const catagories = await Category.find().populate({
-			path: 'contributors.user',
-			select: 'firstName lastName email',
-		});
+		const catagories = await Category.find();
 
 		res.status(200).json({
 			status: 'success',

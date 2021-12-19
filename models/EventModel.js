@@ -39,7 +39,7 @@ const locationSchema = mongoose.Schema(
 	{ _id: false }
 );
 
-const pricingScheman = mongoose.Schema(
+const pricingSchema = mongoose.Schema(
 	{
 		label: {
 			type: String,
@@ -57,7 +57,7 @@ const pricingScheman = mongoose.Schema(
 );
 
 const eventSchema = mongoose.Schema({
-	title: {
+	name: {
 		type: String,
 		required: true,
 		trim: true,
@@ -72,8 +72,8 @@ const eventSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	dates: {
-		type: String,
+	date: {
+		type: Date,
 		required: true,
 	},
 	status: {
@@ -84,18 +84,18 @@ const eventSchema = mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	time: [
-		{
-			startinTime: {
-				type: String,
-				required: true,
-			},
-			endingTime: {
-				type: String,
-				required: true,
-			},
-		},
-	],
+	startTime: {
+		type: Date,
+		required: true,
+	},
+	endTime: {
+		type: Date,
+		required: true,
+	},
+	isOnline: {
+		type: Boolean,
+		required: true,
+	},
 	media: [
 		{
 			type: String,
@@ -106,7 +106,7 @@ const eventSchema = mongoose.Schema({
 		type: locationSchema,
 		required: true,
 	},
-	pricing: [{ type: pricingScheman }],
+	pricing: [{ type: pricingSchema }],
 	category: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Category',

@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
-const Role = require('../models/RoleModel');
+const Ticket = require('../models/TicketModel');
 
-exports.createRole = async (req, res) => {
+exports.createTicket = async (req, res) => {
 	try {
-		await Role.create(req.body);
+		await Ticket.create(req.body);
 		res.status(200).json({
 			status: 'success',
-			message: 'role created successfully',
+			message: 'ticket created successfully',
 		});
 	} catch (err) {
 		console.log(err);
@@ -17,13 +16,13 @@ exports.createRole = async (req, res) => {
 	}
 };
 
-exports.getAllRoles = async (req, res) => {
+exports.getAllTickets = async (req, res) => {
 	try {
-		const roles = await Role.find();
+		const tickets = await Ticket.find();
 		res.status(200).json({
 			status: 'success',
-			result: roles.length,
-			data: roles,
+			result: tickets.length,
+			data: tickets,
 		});
 	} catch (err) {
 		console.log(err);

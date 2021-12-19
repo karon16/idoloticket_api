@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 
 const userSchema = mongoose.Schema(
 	{
@@ -23,6 +24,9 @@ const userSchema = mongoose.Schema(
 				'{VALUE} is not a valid email address',
 			],
 		},
+		emailToken: {
+			type: mongoose.Schema.Types.Mixed,
+		},
 		phone: {
 			type: Number,
 			validate: {
@@ -40,17 +44,22 @@ const userSchema = mongoose.Schema(
 			required: [true, 'You must enter a password'],
 			min: [6, 'Password must have at least 6 characters'],
 		},
-		role: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role' }],
+		isVerified: {
+			type: Boolean,
+			default: false,
+		},
+		role: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', default : "" }],
 	},
 	{ timestamps: true }
 );
 
 userSchema.pre('save', function (next) {
+	this.emailToken = crypto.randomBytes(24).toString('hex');
+
 	if (this.password) {
 		const salt = bcrypt.genSaltSync(10);
 		this.password = bcrypt.hashSync(this.password, salt);
 	}
-
 	next();
 });
 

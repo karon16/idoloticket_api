@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createCategory, getAllCategorys } = require('../controllers/Category');
+const { createCategory, getAllCategorys } = require('../controllers/CategoryController');
 const checkAuth = require('../middlewares/checkAuth');
 
 router
