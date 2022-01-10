@@ -4,8 +4,8 @@ const {
 	getAllTickets,
 	createTicket,
 } = require('../controllers/TicketController');
-const checkAuth = require('../middlewares/checkAuth');
+// const checkAuth = require('../middlewares/checkAuth');
 
-router.route('/').get(getAllTickets).post(checkAuth, createTicket);
+router.route('/').get(getAllTickets).post(createTicket);
 
 module.exports = router;

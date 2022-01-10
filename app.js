@@ -8,6 +8,7 @@ const RightRoute = require('./routes/RightsRoute');
 const OrganisationRoute = require('./routes/OrganisationRoute');
 const CategoryRoute = require('./routes/CategoryRoutes');
 const EventRoute = require('./routes/EventRoute');
+const TicketRoute = require('./routes/TicketRoute');
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use('/api/v1/rights', RightRoute);
 app.use('/api/v1/organisations', OrganisationRoute);
 app.use('/api/v1/categories', CategoryRoute);
 app.use('/api/v1/events', EventRoute);
+app.use('/api/v1/tickets', TicketRoute);
 
 module.exports = app;

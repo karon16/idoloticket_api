@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
+const QRCode = require('qrcode');
+const Event = require('./EventModel');
 
 const ticketSchema = mongoose.Schema(
 	{
-		qrCode: {
-			type: String,
-		},
+		qrCode: String,
 		isValid: {
 			type: Boolean,
 			default: true,
@@ -24,6 +24,12 @@ const ticketSchema = mongoose.Schema(
 	},
 	{ timestamps: true }
 );
+
+ticketSchema.pre('save', async function (next) {
+	const event = await Event.findById(this.event);	
+	this.qrCode = await QRCode.toDataURL(event.name)
+	next();
+});
 
 const Ticket = mongoose.model('Ticket', ticketSchema);
 module.exports = Ticket;
