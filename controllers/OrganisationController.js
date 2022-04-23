@@ -8,6 +8,14 @@ exports.createOrganisation = async (req, res) => {
 			message: 'organisation created successfully',
 		});
 	} catch (err) {
+		console.log(err);
+		if (err.code === 11000) {
+			// Duplicate username
+			return res.status(422).send({
+				status: 'fail',
+				message: 'organisation already exist, find another name!',
+			});
+		}
 		res.status(404).json({
 			status: 'error',
 			message: err,

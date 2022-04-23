@@ -26,8 +26,8 @@ const ticketSchema = mongoose.Schema(
 );
 
 ticketSchema.pre('save', async function (next) {
-	const event = await Event.findById(this.event);	
-	this.qrCode = await QRCode.toDataURL(event.name)
+	const event = await Event.findById(this.event);
+	this.qrCode = await QRCode.toDataURL(event.name);
 	next();
 });
 

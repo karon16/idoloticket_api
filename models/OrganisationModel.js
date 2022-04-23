@@ -4,20 +4,15 @@ const adressSchema = mongoose.Schema(
 	{
 		country: {
 			type: String,
-			required: true,
 			trim: true,
+			default: 'DRC',
 		},
 		city: {
 			type: String,
 			required: true,
 			trim: true,
 		},
-		town: {
-			type: String,
-			required: true,
-			trim: true,
-		},
-		quarter: {
+		commune: {
 			type: String,
 			required: true,
 			trim: true,
@@ -27,10 +22,15 @@ const adressSchema = mongoose.Schema(
 			required: true,
 			trim: true,
 		},
-		number: {
-			type: Number,
-			required: true,
-		},
+		// street: {
+		// 	type: String,
+		// 	required: true,
+		// 	trim: true,
+		// },
+		// number: {
+		// 	type: Number,
+		// 	required: true,
+		// },
 	},
 	{ _id: false }
 );
@@ -51,7 +51,7 @@ const organizationSchema = mongoose.Schema(
 			trim: true,
 			unique: true,
 		},
-		profilePicture: {
+		profileImage: {
 			type: String,
 		},
 		coverImage: {

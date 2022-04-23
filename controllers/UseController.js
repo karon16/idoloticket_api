@@ -94,6 +94,19 @@ exports.loginUser = async (req, res) => {
 		});
 	}
 };
+
+exports.getOneUser = async (req, res) => {
+	try {
+		// console.log(req.params.id);
+		const user = await User.findById(req.params.id);
+		res.status(200).json({
+			status: 'success',
+			data: user,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
 exports.getAllUsers = async (req, res) => {
 	try {
 		const users = await User.find();

@@ -4,8 +4,8 @@ const {
 	createOrganisation,
 	getAllOrganisations,
 } = require('../controllers/OrganisationController');
-const checkAuth = require('../middlewares/checkAuth');
+// const checkAuth = require('../middlewares/checkAuth');
 
-router.route('/').get(getAllOrganisations).post(checkAuth, createOrganisation);
+router.route('/').get(getAllOrganisations).post(createOrganisation);
 
 module.exports = router;
