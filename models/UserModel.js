@@ -48,7 +48,10 @@ const userSchema = mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		role: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', default: '' }],
+		role: [
+			{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', default: '' },
+			{ _id: false },
+		],
 	},
 	{ timestamps: true }
 );

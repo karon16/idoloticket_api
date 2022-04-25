@@ -98,7 +98,11 @@ exports.loginUser = async (req, res) => {
 exports.getOneUser = async (req, res) => {
 	try {
 		// console.log(req.params.id);
-		const user = await User.findById(req.params.id);
+		const user = await User.findById(req.params.id).populate({
+			path: 'role',
+			select: 'label',
+		});
+
 		res.status(200).json({
 			status: 'success',
 			data: user,
