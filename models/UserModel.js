@@ -14,6 +14,13 @@ const userSchema = mongoose.Schema(
 			required: true,
 			trim: true,
 		},
+		bio: {
+			type: String,
+			trim: true,
+		},
+		profilePicture: {
+			type: String,
+		},
 		email: {
 			type: String,
 			required: true,
@@ -49,8 +56,11 @@ const userSchema = mongoose.Schema(
 			default: false,
 		},
 		role: [
-			{ type: mongoose.Schema.Types.ObjectId, ref: 'Role', default: '' },
-			{ _id: false },
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'Role',
+				default: '',
+			},
 		],
 	},
 	{ timestamps: true }

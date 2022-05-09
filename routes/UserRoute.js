@@ -11,11 +11,13 @@ const {
 	resetPassword,
 	validatePasswordReset,
 	getOneUser,
+	modifyUser,
 } = require('../controllers/UseController');
 const router = express.Router();
 
 router.route('/').get(getAllUsers);
 router.route('/:id').get(checkAuth, getOneUser);
+router.route('/:id').patch(checkAuth, modifyUser);
 router.route('/verify_email').get(verifyEmail);
 router.route('/forgot-password').post(forgotPassword);
 router

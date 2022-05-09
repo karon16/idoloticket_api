@@ -94,6 +94,10 @@ const organizationSchema = mongoose.Schema(
 			total: { type: Number },
 			average: { type: Number },
 		},
+		creatorId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+		},
 		team: [
 			{
 				type: teamSchema,

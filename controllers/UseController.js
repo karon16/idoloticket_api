@@ -124,6 +124,29 @@ exports.getAllUsers = async (req, res) => {
 	}
 };
 
+exports.modifyUser = async (req, res) => {
+	try {
+		const isUser = await User.findOne({ _id: req.params.id });
+		if (isUser) {
+			await User.updateOne({ _id: req.params.id }, req.body);
+			res.status(204).json({
+				status: 'Sucess',
+				message: 'user updated successfully',
+			});
+		} else {
+			res.status(409).json({
+				status: 'Fail',
+				message: 'user do not exist',
+			});
+		}
+	} catch (error) {
+		res.status(400).json({
+			status: 'error',
+			message: 'cannot update user',
+		});
+	}
+};
+
 exports.deleteUser = async (req, res) => {
 	try {
 		const isUser = await User.findOne({ _id: req.params.id });

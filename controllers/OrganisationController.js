@@ -38,3 +38,22 @@ exports.getAllOrganisations = async (req, res) => {
 		console.log(err);
 	}
 };
+
+exports.getUserOrganisations = async (req, res) => {
+	try {
+		const organisations = await Organisation.find({
+			creatorId: req.params.id,
+		}).populate({
+			path: 'team.memberInfo',
+			select: 'firstName lastName email',
+		});
+
+		res.status(200).json({
+			status: 'success',
+			result: organisations.length,
+			data: organisations,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
