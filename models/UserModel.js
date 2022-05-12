@@ -59,7 +59,7 @@ const userSchema = mongoose.Schema(
 			{
 				type: mongoose.Schema.Types.ObjectId,
 				ref: 'Role',
-				default: '',
+				default: '6196aba8c3c96f3ecfa24278',
 			},
 		],
 	},
