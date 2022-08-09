@@ -47,11 +47,10 @@ exports.createUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
+	console.log('req', req.body);
 	try {
-		const user = await User.findOne({ email: req.body.email }).populate(
-			'role',
-			'label'
-		);
+		const user = await User.findOne({ email: req.body.email }) 
+		console.log('user', user);
 		if (user) {
 			const result = await bcrypt.compare(req.body.password, user.password);
 			//res.send(result);
@@ -63,7 +62,7 @@ exports.loginUser = async (req, res) => {
 					});
 				} else if (result) {
 					const token = jwt.sign(
-						{ id: user._id, email: user.email, role: user.role },
+						{ id: user._id, email: user.email },
 						process.env.JWT_KEY,
 						{ expiresIn: '2h' }
 					);
@@ -90,7 +89,7 @@ exports.loginUser = async (req, res) => {
 	} catch (err) {
 		res.status(404).json({
 			status: 'error',
-			message: err,
+			message: 'An error occured, try again later',
 		});
 	}
 };
@@ -98,10 +97,7 @@ exports.loginUser = async (req, res) => {
 exports.getOneUser = async (req, res) => {
 	try {
 		// console.log(req.params.id);
-		const user = await User.findById(req.params.id).populate({
-			path: 'role',
-			select: 'label',
-		});
+		const user = await User.findById(req.params.id);
 
 		res.status(200).json({
 			status: 'success',

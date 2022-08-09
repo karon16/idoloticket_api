@@ -55,13 +55,14 @@ const userSchema = mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		role: [
-			{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: 'Role',
-				default: '6196aba8c3c96f3ecfa24278',
-			},
-		],
+		isCreator: { type: Boolean, default: false },
+		// role: [
+		// 	{
+		// 		type: mongoose.Schema.Types.ObjectId,
+		// 		ref: 'Role',
+		// 		default: '6196aba8c3c96f3ecfa24278',
+		// 	},
+		// ],
 	},
 	{ timestamps: true }
 );
