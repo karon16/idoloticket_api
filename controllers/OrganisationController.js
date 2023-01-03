@@ -2,10 +2,12 @@ const Organisation = require('../models/OrganisationModel');
 
 exports.createOrganisation = async (req, res) => {
 	try {
-		await Organisation.create(req.body);
+		const data = await Organisation.create(req.body);
+		console.log(data);
 		res.status(200).json({
 			status: 'success',
 			message: 'organisation created successfully',
+			id: data._id,
 		});
 	} catch (err) {
 		console.log(err);

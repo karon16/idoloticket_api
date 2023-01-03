@@ -9,7 +9,7 @@ const {
 } = require('../controllers/OrganisationController');
 // const checkAuth = require('../middlewares/checkAuth');
 
-router.route('/').get(getAllOrganisations).post(createOrganisation);
+router.route('/').get(checkAuth, getAllOrganisations).post(checkAuth, createOrganisation);
 router.route('/:id').get(checkAuth, getUserOrganisations);
 
 module.exports = router;

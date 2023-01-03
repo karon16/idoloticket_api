@@ -16,9 +16,37 @@ exports.createCategory = async (req, res) => {
 	}
 };
 
-exports.getAllCategorys = async (req, res) => {
+exports.getAllCategories = async (req, res) => {
 	try {
 		const catagories = await Category.find();
+
+		res.status(200).json({
+			status: 'success',
+			result: catagories.length,
+			data: catagories,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+exports.getEventCategories = async (req, res) => {
+	try {
+		const catagories = await Category.find({ type: 'event' });
+
+		res.status(200).json({
+			status: 'success',
+			result: catagories.length,
+			data: catagories,
+		});
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+exports.getOrganisationCategorys = async (req, res) => {
+	try {
+		const catagories = await Category.find({ type: 'organisation' });
 
 		res.status(200).json({
 			status: 'success',

@@ -12,6 +12,11 @@ const categorySchema = mongoose.Schema(
 			required: [true, 'A description is required for a category'],
 			trim: true,
 		},
+		type: {
+			type: String,
+			required: true,
+			trim: true,
+		},
 	},
 	{ timestamps: true }
 );

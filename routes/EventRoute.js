@@ -3,6 +3,6 @@ const router = express.Router();
 const { getAllEvents, createEvent } = require('../controllers/EventController');
 const checkAuth = require('../middlewares/checkAuth');
 
-router.route('/').get(getAllEvents).post(checkAuth, createEvent);
+router.route('/').get(checkAuth, getAllEvents).post(checkAuth, createEvent);
 
 module.exports = router;

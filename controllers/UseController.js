@@ -49,7 +49,7 @@ exports.createUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
 	console.log('req', req.body);
 	try {
-		const user = await User.findOne({ email: req.body.email }) 
+		const user = await User.findOne({ email: req.body.email });
 		console.log('user', user);
 		if (user) {
 			const result = await bcrypt.compare(req.body.password, user.password);

@@ -4,20 +4,15 @@ const locationSchema = mongoose.Schema(
 	{
 		country: {
 			type: String,
-			required: true,
 			trim: true,
+			default: 'DRC',
 		},
 		city: {
 			type: String,
 			required: true,
 			trim: true,
 		},
-		town: {
-			type: String,
-			required: true,
-			trim: true,
-		},
-		quarter: {
+		commune: {
 			type: String,
 			required: true,
 			trim: true,
@@ -27,14 +22,14 @@ const locationSchema = mongoose.Schema(
 			required: true,
 			trim: true,
 		},
-		number: {
-			type: Number,
-			required: true,
-		},
-		reference: {
-			type: String,
-			trim: true,
-		},
+		// number: {
+		// 	type: Number,
+		// 	required: true,
+		// },
+		// reference: {
+		// 	type: String,
+		// 	trim: true,
+		// },
 	},
 	{ _id: false }
 );
@@ -48,6 +43,9 @@ const pricingSchema = mongoose.Schema(
 		description: {
 			type: String,
 			trim: true,
+		},
+		devise: {
+			type: String,
 		},
 		value: {
 			type: Number,
@@ -68,17 +66,17 @@ const eventSchema = mongoose.Schema({
 		required: true,
 		trim: true,
 	},
-	coverPhotos: {
+	coverPhoto: {
 		type: String,
 		required: true,
 	},
-	date: {
+	startDate: {
 		type: Date,
 		required: true,
 	},
-	status: {
-		type: String,
-		required: true,
+	endDate: {
+		type: Date,
+		required: false,
 	},
 	eventCapacity: {
 		type: Number,
@@ -92,9 +90,10 @@ const eventSchema = mongoose.Schema({
 		type: Date,
 		required: true,
 	},
-	isOnline: {
+	isPosted: {
 		type: Boolean,
-		required: true,
+		default: false,
+		// required: true,
 	},
 	media: [
 		{
@@ -106,6 +105,16 @@ const eventSchema = mongoose.Schema({
 		type: locationSchema,
 		required: true,
 	},
+	eventEmail: {
+		type: String,
+		trim: true,
+		required: true,
+	},
+	eventPhone: {
+		type: String,
+		trim: true,
+		required: true,
+	},
 	pricing: [{ type: pricingSchema }],
 	category: {
 		type: mongoose.Schema.Types.ObjectId,
@@ -114,6 +123,10 @@ const eventSchema = mongoose.Schema({
 	organiser: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Organisation',
+	},
+	creatorId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
 	},
 });
 

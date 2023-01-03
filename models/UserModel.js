@@ -56,6 +56,9 @@ const userSchema = mongoose.Schema(
 			default: false,
 		},
 		isCreator: { type: Boolean, default: false },
+		currentOrganisation: {
+			type: String,
+		},
 		// role: [
 		// 	{
 		// 		type: mongoose.Schema.Types.ObjectId,
